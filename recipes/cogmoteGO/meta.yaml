@@ -18,7 +18,7 @@ source:
     sha256: 3dffbff18ab7c0236cb5f3edc21ad95b3bbe464b852b75ec5efeca3e0f4d9a12  # [osx and x86_64]
 
 build:
-  has_prefix_files:
+  binary_has_prefix_files:
     - cogmoteGO  # [osx and x86_64]
   number: 0
   missing_dso_whitelist:
