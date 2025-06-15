@@ -17,18 +17,25 @@ source:
 
 build:
   number: 0
-  missing_dso_whitelist:
-    - /lib64/libc.so.6
+  missing_dso_whitelist:  # [linux and osx]
+    - /lib64/libc.so.6  # [linux and osx]
   script:
-    - mkdir -p $PREFIX/bin
-    - cp cogmoteGO* $PREFIX/bin/
+    - mkdir -p $PREFIX/bin  # [linux and osx]
+    - cp cogmoteGO* $PREFIX/bin/  # [linux and osx]
     - chmod +x $PREFIX/bin/cogmoteGO  # [linux and osx]
+
+    # Windows specific
+    - mkdir %PREFIX%\\bin  # [win]
+    - copy cogmoteGO* %PREFIX%\\bin\\  # [win]
+    - copy libzmq-mt-4_3_5.dll %PREFIX%\\bin\\  # [win]
 
 requirements:
   host:
-    - zeromq
+    - zeromq # [linux and osx]
+    - vc # [win]
   run:
-    - zeromq
+    - zeromq # [linux and osx]
+    - vc # [win]
 
 test:
   commands:
