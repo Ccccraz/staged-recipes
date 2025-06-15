@@ -27,7 +27,7 @@ build:
     - mkdir -p $PREFIX/bin  # [linux or osx]
     - cp cogmoteGO* $PREFIX/bin/  # [linux or osx]
     - chmod +x $PREFIX/bin/cogmoteGO  # [linux or osx]
-    - install_name_tool -change /usr/local/opt/zeromq/lib/libzmq.5.dylib @rpath/libzmq.5.dylib $PREFIX/bin/cogmoteGO
+    - install_name_tool -change /usr/local/opt/zeromq/lib/libzmq.5.dylib @rpath/libzmq.5.dylib $PREFIX/bin/cogmoteGO  # [osx and x86_64]
 
     # Windows specific
     - mkdir %PREFIX%\\bin  # [win]
@@ -35,8 +35,6 @@ build:
     - copy libzmq-mt-4_3_5.dll %PREFIX%\\bin\\  # [win]
 
 requirements:
-  build:
-    - zeromq  # [osx and x86_64]
   host:
     - zeromq  # [linux or osx]
     - vc  # [win]
