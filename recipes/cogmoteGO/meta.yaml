@@ -19,7 +19,7 @@ source:
 
 build:
   binary_has_prefix_files:
-    - cogmoteGO  # [osx and x86_64]
+    - $PREFIX/bin/cogmoteGO  # [osx and x86_64]
   number: 0
   missing_dso_whitelist:
     - /lib64/libc.so.6  # [linux]
