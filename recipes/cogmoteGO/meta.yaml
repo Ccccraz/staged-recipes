@@ -25,7 +25,8 @@ build:
     - /usr/local/opt/zeromq/lib/libzmq.5.dylib  # [osx and x86_64]
   script:
     - mkdir -p $PREFIX/bin  # [linux or osx]
-    - cp cogmoteGO* $PREFIX/bin/  # [linux or osx]
+    - cp cogmoteGo* $PREFIX/bin/  # [linux or osx]
+    - install_name_tool -add_rpath $PREFIX/lib $PREFIX/bin/cogmoteGO  # [osx and x86_64]
     - chmod +x $PREFIX/bin/cogmoteGO  # [linux or osx]
 
     # Windows specific
