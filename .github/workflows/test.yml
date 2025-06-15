@@ -1,0 +1,17 @@
+name: Build OSX
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-13
+    
+    steps:
+    - uses: actions/checkout@v4  # 检出代码
+
+    - name: Install pixi
+      run: brew install pixi
+    
+    - name: Run pixi build command
+      run: pixi run build-osx osx64
