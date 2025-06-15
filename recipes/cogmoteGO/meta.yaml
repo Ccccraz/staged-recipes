@@ -22,10 +22,12 @@ build:
   missing_dso_whitelist:
     - /lib64/libc.so.6  # [linux]
     - /opt/homebrew/opt/zeromq/lib/libzmq.5.dylib  # [osx and arm64]
+    - /usr/local/opt/zeromq/lib/libzmq.5.dylib  # [osx and x86_64]
   script:
     - mkdir -p $PREFIX/bin  # [linux or osx]
     - cp cogmoteGO* $PREFIX/bin/  # [linux or osx]
     - chmod +x $PREFIX/bin/cogmoteGO  # [linux or osx]
+    - install_name_tool -change /usr/local/opt/zeromq/lib/libzmq.5.dylib @rpath/libzmq.5.dylib $PREFIX/bin/cogmoteGO
 
     # Windows specific
     - mkdir %PREFIX%\\bin  # [win]
